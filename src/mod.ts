@@ -75,11 +75,6 @@ class HillThePlateDealer implements IPreAkiLoadMod, IPostDBLoadMod {
         // Get a reference to the database tables
         const tables = databaseServer.getTables();
 
-        // TODO: begin
-        // Assuming you have the traders object and the armor plate ID
-
-        // Assuming you have access to the tables object
-
         const existingItemPrices = {}
         let lowestRealPrice = Infinity;
         // Iterate over each trader
@@ -93,7 +88,7 @@ class HillThePlateDealer implements IPreAkiLoadMod, IPostDBLoadMod {
 
             // Check if the trader exists
             if (!trader) {
-                this.logger.info(`Trader with ID ${traderId} does not exist.`);
+                this.logger.debug(`Trader with ID ${traderId} does not exist.`);
                 continue;
             }
 
@@ -117,11 +112,9 @@ class HillThePlateDealer implements IPreAkiLoadMod, IPostDBLoadMod {
                 }
             }
             else {
-                this.logger.info(`trader ${traderId} did not have any items in the database`)
+                this.logger.debug(`trader ${traderId} did not have any items in the database`)
             }
         }
-
-        // TODO: end
 
         this.traderHelper.addTraderToDb(baseJson, tables, jsonUtil);
 
@@ -151,7 +144,7 @@ class HillThePlateDealer implements IPreAkiLoadMod, IPostDBLoadMod {
                 const existingPrice = existingItemPrices[id];
                 const itemPriceTooLow = existingPrice < lowestRealPrice
                 const price = itemPriceTooLow ? lowestRealPrice : existingPrice;
-                this.logger.info(`lowest real price is ${lowestRealPrice}`)
+                this.logger.debug(`lowest real price is ${lowestRealPrice}`)
 
                 this.fluentAssortCreator.createSingleAssortItem(id)
                     .addStackCount(5)
