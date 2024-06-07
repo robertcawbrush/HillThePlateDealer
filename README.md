@@ -1,0 +1,1 @@
+Hey folks, a mod shadow banned me for an AI image using the colors yellow and blue (wasnt the ukrainian flag) and when i asked about it he banned me so I don't develop for SPT anymore. If you are wondering when this will support 3.9 the answer is never.
